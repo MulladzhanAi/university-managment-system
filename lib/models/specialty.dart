@@ -6,10 +6,10 @@ part 'specialty.g.dart';
 @freezed
 class Specialty with _$Specialty{
   factory Specialty({
-    int? id,
-    String? name,
-    String? degree,
-    String? edu_form,
+    //int? specialtyId,
+    int? admissionId,
+    String? specialtyName,
+    int? groupCapacity,
 })=_Specialty;
 
   factory Specialty.fromJson(Map<String,dynamic>json)=>_$SpecialtyFromJson(json);

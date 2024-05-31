@@ -8,16 +8,14 @@ part of 'specialty.dart';
 
 _$SpecialtyImpl _$$SpecialtyImplFromJson(Map<String, dynamic> json) =>
     _$SpecialtyImpl(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
-      degree: json['degree'] as String?,
-      edu_form: json['edu_form'] as String?,
+      admissionId: json['admissionId'] as int?,
+      specialtyName: json['specialtyName'] as String?,
+      groupCapacity: json['groupCapacity'] as int?,
     );
 
 Map<String, dynamic> _$$SpecialtyImplToJson(_$SpecialtyImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'degree': instance.degree,
-      'edu_form': instance.edu_form,
+      'admissionId': instance.admissionId,
+      'specialtyName': instance.specialtyName,
+      'groupCapacity': instance.groupCapacity,
     };

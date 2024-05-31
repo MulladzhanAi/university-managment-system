@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:convert/convert.dart';
 import 'package:sanzh/injection/injectable.dart';
 import 'package:sanzh/presentation/register/register_screen.dart';
+import 'package:sanzh/presentation/start/applicant/apply/apply_screen.dart';
 import 'package:sanzh/presentation/start/start_screen.dart';
 
 void main() {

@@ -8,12 +8,12 @@ part of 'faculties.dart';
 
 _$FacultyImpl _$$FacultyImplFromJson(Map<String, dynamic> json) =>
     _$FacultyImpl(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
+      facultyId: json['facultyId'] as int?,
+      facultyName: json['facultyName'] as String?,
     );
 
 Map<String, dynamic> _$$FacultyImplToJson(_$FacultyImpl instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
+      'facultyId': instance.facultyId,
+      'facultyName': instance.facultyName,
     };

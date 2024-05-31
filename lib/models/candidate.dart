@@ -6,7 +6,10 @@ part 'candidate.g.dart';
 @freezed
 class Candidate with _$Candidate{
   factory Candidate({
-    String? name,
+    String? firstName,
+    String? middleName,
+    String? lastName,
+    bool? isRecommended,
     int? testScore,
 })=_Candidate;
 

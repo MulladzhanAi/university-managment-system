@@ -20,10 +20,10 @@ Specialty _$SpecialtyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Specialty {
-  int? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  String? get degree => throw _privateConstructorUsedError;
-  String? get edu_form => throw _privateConstructorUsedError;
+//int? specialtyId,
+  int? get admissionId => throw _privateConstructorUsedError;
+  String? get specialtyName => throw _privateConstructorUsedError;
+  int? get groupCapacity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $SpecialtyCopyWith<$Res> {
   factory $SpecialtyCopyWith(Specialty value, $Res Function(Specialty) then) =
       _$SpecialtyCopyWithImpl<$Res, Specialty>;
   @useResult
-  $Res call({int? id, String? name, String? degree, String? edu_form});
+  $Res call({int? admissionId, String? specialtyName, int? groupCapacity});
 }
 
 /// @nodoc
@@ -52,28 +52,23 @@ class _$SpecialtyCopyWithImpl<$Res, $Val extends Specialty>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? degree = freezed,
-    Object? edu_form = freezed,
+    Object? admissionId = freezed,
+    Object? specialtyName = freezed,
+    Object? groupCapacity = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      admissionId: freezed == admissionId
+          ? _value.admissionId
+          : admissionId // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      specialtyName: freezed == specialtyName
+          ? _value.specialtyName
+          : specialtyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      degree: freezed == degree
-          ? _value.degree
-          : degree // ignore: cast_nullable_to_non_nullable
-              as String?,
-      edu_form: freezed == edu_form
-          ? _value.edu_form
-          : edu_form // ignore: cast_nullable_to_non_nullable
-              as String?,
+      groupCapacity: freezed == groupCapacity
+          ? _value.groupCapacity
+          : groupCapacity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -86,7 +81,7 @@ abstract class _$$SpecialtyImplCopyWith<$Res>
       __$$SpecialtyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name, String? degree, String? edu_form});
+  $Res call({int? admissionId, String? specialtyName, int? groupCapacity});
 }
 
 /// @nodoc
@@ -100,28 +95,23 @@ class __$$SpecialtyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
-    Object? degree = freezed,
-    Object? edu_form = freezed,
+    Object? admissionId = freezed,
+    Object? specialtyName = freezed,
+    Object? groupCapacity = freezed,
   }) {
     return _then(_$SpecialtyImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      admissionId: freezed == admissionId
+          ? _value.admissionId
+          : admissionId // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      specialtyName: freezed == specialtyName
+          ? _value.specialtyName
+          : specialtyName // ignore: cast_nullable_to_non_nullable
               as String?,
-      degree: freezed == degree
-          ? _value.degree
-          : degree // ignore: cast_nullable_to_non_nullable
-              as String?,
-      edu_form: freezed == edu_form
-          ? _value.edu_form
-          : edu_form // ignore: cast_nullable_to_non_nullable
-              as String?,
+      groupCapacity: freezed == groupCapacity
+          ? _value.groupCapacity
+          : groupCapacity // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -129,23 +119,22 @@ class __$$SpecialtyImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SpecialtyImpl implements _Specialty {
-  _$SpecialtyImpl({this.id, this.name, this.degree, this.edu_form});
+  _$SpecialtyImpl({this.admissionId, this.specialtyName, this.groupCapacity});
 
   factory _$SpecialtyImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpecialtyImplFromJson(json);
 
+//int? specialtyId,
   @override
-  final int? id;
+  final int? admissionId;
   @override
-  final String? name;
+  final String? specialtyName;
   @override
-  final String? degree;
-  @override
-  final String? edu_form;
+  final int? groupCapacity;
 
   @override
   String toString() {
-    return 'Specialty(id: $id, name: $name, degree: $degree, edu_form: $edu_form)';
+    return 'Specialty(admissionId: $admissionId, specialtyName: $specialtyName, groupCapacity: $groupCapacity)';
   }
 
   @override
@@ -153,16 +142,18 @@ class _$SpecialtyImpl implements _Specialty {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SpecialtyImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.degree, degree) || other.degree == degree) &&
-            (identical(other.edu_form, edu_form) ||
-                other.edu_form == edu_form));
+            (identical(other.admissionId, admissionId) ||
+                other.admissionId == admissionId) &&
+            (identical(other.specialtyName, specialtyName) ||
+                other.specialtyName == specialtyName) &&
+            (identical(other.groupCapacity, groupCapacity) ||
+                other.groupCapacity == groupCapacity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, degree, edu_form);
+  int get hashCode =>
+      Object.hash(runtimeType, admissionId, specialtyName, groupCapacity);
 
   @JsonKey(ignore: true)
   @override
@@ -180,22 +171,19 @@ class _$SpecialtyImpl implements _Specialty {
 
 abstract class _Specialty implements Specialty {
   factory _Specialty(
-      {final int? id,
-      final String? name,
-      final String? degree,
-      final String? edu_form}) = _$SpecialtyImpl;
+      {final int? admissionId,
+      final String? specialtyName,
+      final int? groupCapacity}) = _$SpecialtyImpl;
 
   factory _Specialty.fromJson(Map<String, dynamic> json) =
       _$SpecialtyImpl.fromJson;
 
+  @override //int? specialtyId,
+  int? get admissionId;
   @override
-  int? get id;
+  String? get specialtyName;
   @override
-  String? get name;
-  @override
-  String? get degree;
-  @override
-  String? get edu_form;
+  int? get groupCapacity;
   @override
   @JsonKey(ignore: true)
   _$$SpecialtyImplCopyWith<_$SpecialtyImpl> get copyWith =>

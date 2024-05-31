@@ -59,9 +59,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   const SizedBox(height: 16,),
                   Button(
                     title: "Log in",
-                    onTap: (){
-                      print("Login: ${state.login ?? ''}");
-                      print("Password: ${state.password ?? ''}");
+                    onTap: ()async{
+                      await bloc.signIN(context);
+                      //bloc.authComplete(context);
                     },
                   )
                 ],

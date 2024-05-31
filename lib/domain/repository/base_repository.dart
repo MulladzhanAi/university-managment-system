@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:sanzh/models/responce/auth_responce.dart';
 import 'package:sanzh/network/api/api_service.dart';
 
 @lazySingleton
@@ -8,6 +9,6 @@ class BaseRepository {
   BaseRepository(this.api);
 
 
-  void registerApplicant(Map<String, dynamic> map) {
-
+  Future<AuthResponce> signIn(Map<String, dynamic> map) {
+    return api.signIn(map);
   }}

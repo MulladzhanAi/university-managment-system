@@ -4,6 +4,8 @@ import 'package:sanzh/models/faculties_responce.dart';
 import 'package:sanzh/models/specialty.dart';
 import 'package:sanzh/models/specialty_responce.dart';
 
+import '../../../models/candidate.dart';
+
 part 'applicant_state.freezed.dart';
 
 @freezed
@@ -14,5 +16,6 @@ class ApplicantState with _$ApplicantState{
     final Faculty? selectedFaculty,
     final Specialty? selectedSpecialty,
     final bool? isLoading,
+    @Default([]) List<Candidate> candidates,
 })=_ApplicantState;
 }

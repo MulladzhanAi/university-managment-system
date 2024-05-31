@@ -20,8 +20,8 @@ Faculty _$FacultyFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Faculty {
-  int? get id => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
+  int? get facultyId => throw _privateConstructorUsedError;
+  String? get facultyName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $FacultyCopyWith<$Res> {
   factory $FacultyCopyWith(Faculty value, $Res Function(Faculty) then) =
       _$FacultyCopyWithImpl<$Res, Faculty>;
   @useResult
-  $Res call({int? id, String? name});
+  $Res call({int? facultyId, String? facultyName});
 }
 
 /// @nodoc
@@ -49,17 +49,17 @@ class _$FacultyCopyWithImpl<$Res, $Val extends Faculty>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? facultyId = freezed,
+    Object? facultyName = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      facultyId: freezed == facultyId
+          ? _value.facultyId
+          : facultyId // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      facultyName: freezed == facultyName
+          ? _value.facultyName
+          : facultyName // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -72,7 +72,7 @@ abstract class _$$FacultyImplCopyWith<$Res> implements $FacultyCopyWith<$Res> {
       __$$FacultyImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name});
+  $Res call({int? facultyId, String? facultyName});
 }
 
 /// @nodoc
@@ -86,17 +86,17 @@ class __$$FacultyImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? facultyId = freezed,
+    Object? facultyName = freezed,
   }) {
     return _then(_$FacultyImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      facultyId: freezed == facultyId
+          ? _value.facultyId
+          : facultyId // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      facultyName: freezed == facultyName
+          ? _value.facultyName
+          : facultyName // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -105,19 +105,19 @@ class __$$FacultyImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FacultyImpl implements _Faculty {
-  _$FacultyImpl({this.id, this.name});
+  _$FacultyImpl({this.facultyId, this.facultyName});
 
   factory _$FacultyImpl.fromJson(Map<String, dynamic> json) =>
       _$$FacultyImplFromJson(json);
 
   @override
-  final int? id;
+  final int? facultyId;
   @override
-  final String? name;
+  final String? facultyName;
 
   @override
   String toString() {
-    return 'Faculty(id: $id, name: $name)';
+    return 'Faculty(facultyId: $facultyId, facultyName: $facultyName)';
   }
 
   @override
@@ -125,13 +125,15 @@ class _$FacultyImpl implements _Faculty {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FacultyImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name));
+            (identical(other.facultyId, facultyId) ||
+                other.facultyId == facultyId) &&
+            (identical(other.facultyName, facultyName) ||
+                other.facultyName == facultyName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name);
+  int get hashCode => Object.hash(runtimeType, facultyId, facultyName);
 
   @JsonKey(ignore: true)
   @override
@@ -148,14 +150,15 @@ class _$FacultyImpl implements _Faculty {
 }
 
 abstract class _Faculty implements Faculty {
-  factory _Faculty({final int? id, final String? name}) = _$FacultyImpl;
+  factory _Faculty({final int? facultyId, final String? facultyName}) =
+      _$FacultyImpl;
 
   factory _Faculty.fromJson(Map<String, dynamic> json) = _$FacultyImpl.fromJson;
 
   @override
-  int? get id;
+  int? get facultyId;
   @override
-  String? get name;
+  String? get facultyName;
   @override
   @JsonKey(ignore: true)
   _$$FacultyImplCopyWith<_$FacultyImpl> get copyWith =>

@@ -40,13 +40,9 @@ class _ApplicationRequestScreenState extends State<ApplicationRequestScreen> {
                       child: CircularProgressIndicator(),
                     );
                   }
-                  return ListView.builder(
-                      primary: false,
-                      shrinkWrap: true,
-                      itemCount: 10,
-                      itemBuilder: (context,index){
-                        return Text("${index}");
-                      });
+                  if(state.data!=null)
+                  return Center(child: Text("${state.data!.firstName ?? ''}"));
+                  return Text("data");
                 },),
             ),
           ),

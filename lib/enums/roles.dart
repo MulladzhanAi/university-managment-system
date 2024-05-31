@@ -1,0 +1,3 @@
+enum Roles{
+  ADMISSION_COMMISSION,
+}

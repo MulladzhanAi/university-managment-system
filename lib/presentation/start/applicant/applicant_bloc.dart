@@ -3,8 +3,10 @@ import 'package:sanzh/models/faculties.dart';
 import 'package:sanzh/models/specialty.dart';
 import 'package:sanzh/presentation/start/applicant/applicant_state.dart';
 
+import '../../../constans.dart';
 import '../../../injection/injectable.dart';
 import '../../../network/api/http_service.dart';
+import 'package:http/http.dart' as http;
 
 class ApplicantBloc extends Cubit<ApplicantState>{
 
@@ -16,15 +18,20 @@ class ApplicantBloc extends Cubit<ApplicantState>{
     getFaculties();
   }
 
-  void getFaculties(){
+  void getFaculties()async{
     httpService.getFacultiesAdmissin().then((value) {
       emit(state.copyWith(faculties: value));
+
     });
 
   }
 
   void changeFaculty(Faculty faculty){
+    print('change faculty');
+
     emit(state.copyWith(selectedFaculty: faculty));
+    print('${state.selectedFaculty}');
+    getSpecialty();
   }
 
 
@@ -32,14 +39,24 @@ class ApplicantBloc extends Cubit<ApplicantState>{
 
   }
   void getSpecialty(){
-    if(state.selectedFaculty?.id==null) return;
-    httpService.getSpecialtyAdmission(state.selectedFaculty!.id!).then((value) {
+    print(state.selectedFaculty?.facultyId);
+    if(state.selectedFaculty?.facultyId==null) return;
+    httpService.getSpecialtyAdmission(state.selectedFaculty!.facultyId!).then((value) {
       emit(state.copyWith(specialitys: value));
     });
   }
 
   void changeSpecialty(Specialty specialty){
     emit(state.copyWith(selectedSpecialty: specialty));
+    getCandidates();
+  }
+  
+  void getCandidates(){
+    if(state.selectedSpecialty==null) return;
+    httpService.getCandidateByFacultytiId(state.selectedSpecialty!.admissionId!).then((value) {
+      emit(state.copyWith(candidates: value.data ?? []));
+      print(value);
+    });
   }
 
 }

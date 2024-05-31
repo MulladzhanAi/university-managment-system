@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 import 'package:dio/dio.dart';
+import 'package:sanzh/models/responce/auth_responce.dart';
 
 import '../../constans.dart';
 
@@ -13,7 +14,7 @@ abstract class ApiService{
   @factoryMethod
   factory ApiService(Dio dio) = _ApiService;
 
-  @POST('/university-management-system/applicant/register-applicant')
-  Future<void> registerApplicant(Map<String,dynamic> map);
+  @POST('/auth/login')
+  Future<AuthResponce> signIn(Map<String,dynamic> map);
 
 }

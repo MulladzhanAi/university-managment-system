@@ -7,8 +7,8 @@ part 'faculties.g.dart';
 @freezed
 class Faculty with _$Faculty{
   factory Faculty({
-    int? id,
-    String? name,
+    int? facultyId,
+    String? facultyName,
 
 })=_Faculty;
 

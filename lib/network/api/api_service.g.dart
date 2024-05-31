@@ -13,7 +13,7 @@ class _ApiService implements ApiService {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://26.253.41.134:8080/api';
+    baseUrl ??= 'http://172.20.10.9:8080';
   }
 
   final Dio _dio;
@@ -21,27 +21,30 @@ class _ApiService implements ApiService {
   String? baseUrl;
 
   @override
-  Future<void> registerApplicant(Map<String, dynamic> map) async {
+  Future<AuthResponce> signIn(Map<String, dynamic> map) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    await _dio.fetch<void>(_setStreamType<void>(Options(
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<AuthResponce>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          '/university-management-system/applicant/register-applicant',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
+            .compose(
+              _dio.options,
+              '/auth/login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = AuthResponce.fromJson(_result.data!);
+    return value;
   }
 
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
