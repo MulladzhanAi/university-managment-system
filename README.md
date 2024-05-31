@@ -1,6 +1,16 @@
-# sanzh
+# UMS
 
-A new Flutter project.
+
+Flutter project for administration student and teacher. 
+Stack:
+-BackEnd JAVA,
+-REST API,
+-Dependency Injection,
+-CUBIT,
+-Retrofit,
+-http,
+-freezed
+
 
 ## Getting Started
 
