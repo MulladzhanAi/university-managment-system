@@ -28,6 +28,7 @@ class RegisterBloc extends Cubit<RegisterState>{
   }
 
   signIN(BuildContext context){
+    emit(state.copyWith(isLoading: true));
     Map<String,dynamic> map=Map();
     map['login']=state.login;
     map['password']=state.password;
@@ -35,11 +36,11 @@ class RegisterBloc extends Cubit<RegisterState>{
       print(value);
 /*      var tokenSingle=getIt.get<TokenSingle>();
       print(tokenSingle.token);*/
-      authComplete(context);
+      authComplete(context,value.message ?? '');
     });
   }
 
-  void authComplete(BuildContext context) {
+  void authComplete(BuildContext context,String message) {
     var tokenSingle = getIt.get<TokenSingle>();
 
     print("TokenSingle role: ${tokenSingle.role}");
@@ -51,7 +52,8 @@ class RegisterBloc extends Cubit<RegisterState>{
         }));
         break;
       default:
-        throw Exception("Unexpected role: ${tokenSingle.role}");
+        emit(state.copyWith(isLoading: false,showError: true,errorText: message));
+        break;
     }
   }
 }

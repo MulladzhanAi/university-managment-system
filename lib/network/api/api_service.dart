@@ -16,5 +16,8 @@ abstract class ApiService{
 
   @POST('/auth/login')
   Future<AuthResponce> signIn(Map<String,dynamic> map);
+  
+  @POST('/applicant/verify')
+  Future<void> verifyApplicant(@Body() Map<String,dynamic> map);
 
 }

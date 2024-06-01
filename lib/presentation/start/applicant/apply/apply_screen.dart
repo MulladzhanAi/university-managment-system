@@ -42,18 +42,21 @@ class _ApplyScreenState extends State<ApplyScreen> {
               builder: (BuildContext context, ApplyState state) {
                 return Column(
                   children: [
-                    const Text("Введите ПН"),
-                    EditText(
+                    if(state.showPnInputFileds)...[
+                      const Text("Введите ПН"),
+                      EditText(
                         onChanged: bloc.changePersonalNumber,
-                    ),
-                    const SizedBox(height: 16,),
-                    Button(title: 'Подтверить',
-                      onTap: () {
-                      bloc.submitPersonalNumber();
-                    },),
+                      ),
+                      const SizedBox(height: 16,),
+                      Button(
+                        isLoading: state.submitPnIsLoading,
+                        title: 'Подтверить',
+                        onTap: () {
+                          bloc.submitPersonalNumber();
+                        },),
+                    ],
 
-
-                    if(!state.hasPersonData && state.personalNumber!=null)...[
+                    if(state.showInputFields)...[
                       const SizedBox(height: 16,),
                       const Text("Введите имя"),
                       EditText(
@@ -114,7 +117,9 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           }),
 
                       const SizedBox(height: 16,),
-                      Button(title: 'Подтвердить',
+                      Button(
+                        isLoading: state.isLoading,
+                          title: 'Подтвердить',
                           onTap: (){
                             bloc.sendApplicantData();
                           }),
@@ -122,9 +127,18 @@ class _ApplyScreenState extends State<ApplyScreen> {
                     ],
 
 
+
+                    if(state.supportText!=null)...[
+                      const SizedBox(height: 16,),
+                      Center(child: Text("${state.supportText}",style: TextStyle(fontWeight: FontWeight.bold),)),
+                      const SizedBox(height: 16,),
+
+                    ],
+
                     if(state.showVerifField ?? false)...[
                       const SizedBox(height: 16,),
-                      const Text("Введите код"),
+                      const Text("Введите код отправленный на email"),
+                      const SizedBox(height: 16,),
                       EditText(
                         onChanged: bloc.changeVerificationCode,
                       ),
@@ -135,6 +149,11 @@ class _ApplyScreenState extends State<ApplyScreen> {
                           }),
                     ],
 
+                    if(state.showError)...[
+                      const SizedBox(height: 16,),
+                      Text("${state.errorMessage}",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
+                      const SizedBox(height: 16,),
+                    ],
                     if(state.codeIsMatch)...[
                       const SizedBox(height: 16,),
                       Text("Ваша заявка отправлена.Вы в рассмотрении приемной комисии"),

@@ -189,6 +189,12 @@ class HttpService{
       var data = json.decode(decodedBody);
       var message = data['message'];
       var status=data['status'];
+      if(status==400){
+        return RegisterApplicantResponce(
+          status: status,
+          message: message,
+        );
+      }
       var id=data['data']['applicantApplicationId'];
       RegisterApplicantResponce registerApplicantResponce=RegisterApplicantResponce(
         status: status,
@@ -252,6 +258,18 @@ class HttpService{
       var data = json.decode(decodedBody);
       var message = data['message'];
       var status=data['status'];
+      if(status==422){
+        return AuthResponce(
+          message: message,
+          status: status
+        );
+      }
+      if(status==400){
+        return AuthResponce(
+          message: message,
+          status: status,
+        );
+      }
       var token = data['data']['token'];
       Roles role=Roles.values.firstWhere((element) => element.name==data['data']['role']);
       AuthResponce authResponce=AuthResponce(
@@ -288,6 +306,12 @@ class HttpService{
       var data = json.decode(decodedBody);
       var message = data['message'];
       var status=data['status'];
+      if(message=='Заявки абитуриентов отсутствуют'){
+        return VerifyApplicantDataResponce(
+          message: message,
+          status: status,
+        );
+      }
       var jsonData=data['data'];
       VerifyApplicantData verifyApplicantData=VerifyApplicantData.fromJson(jsonData);
       VerifyApplicantDataResponce verifyApplicantDataResponce=VerifyApplicantDataResponce(

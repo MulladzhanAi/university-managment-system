@@ -22,6 +22,7 @@ mixin _$ApplicantState {
   Specialty? get selectedSpecialty => throw _privateConstructorUsedError;
   bool? get isLoading => throw _privateConstructorUsedError;
   List<Candidate> get candidates => throw _privateConstructorUsedError;
+  bool? get candidateLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplicantStateCopyWith<ApplicantState> get copyWith =>
@@ -40,7 +41,8 @@ abstract class $ApplicantStateCopyWith<$Res> {
       Faculty? selectedFaculty,
       Specialty? selectedSpecialty,
       bool? isLoading,
-      List<Candidate> candidates});
+      List<Candidate> candidates,
+      bool? candidateLoading});
 
   $FacultiesResponceCopyWith<$Res>? get faculties;
   $SpecialtyResponceCopyWith<$Res>? get specialitys;
@@ -67,6 +69,7 @@ class _$ApplicantStateCopyWithImpl<$Res, $Val extends ApplicantState>
     Object? selectedSpecialty = freezed,
     Object? isLoading = freezed,
     Object? candidates = null,
+    Object? candidateLoading = freezed,
   }) {
     return _then(_value.copyWith(
       faculties: freezed == faculties
@@ -93,6 +96,10 @@ class _$ApplicantStateCopyWithImpl<$Res, $Val extends ApplicantState>
           ? _value.candidates
           : candidates // ignore: cast_nullable_to_non_nullable
               as List<Candidate>,
+      candidateLoading: freezed == candidateLoading
+          ? _value.candidateLoading
+          : candidateLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 
@@ -159,7 +166,8 @@ abstract class _$$ApplicantStateImplCopyWith<$Res>
       Faculty? selectedFaculty,
       Specialty? selectedSpecialty,
       bool? isLoading,
-      List<Candidate> candidates});
+      List<Candidate> candidates,
+      bool? candidateLoading});
 
   @override
   $FacultiesResponceCopyWith<$Res>? get faculties;
@@ -188,6 +196,7 @@ class __$$ApplicantStateImplCopyWithImpl<$Res>
     Object? selectedSpecialty = freezed,
     Object? isLoading = freezed,
     Object? candidates = null,
+    Object? candidateLoading = freezed,
   }) {
     return _then(_$ApplicantStateImpl(
       faculties: freezed == faculties
@@ -214,6 +223,10 @@ class __$$ApplicantStateImplCopyWithImpl<$Res>
           ? _value._candidates
           : candidates // ignore: cast_nullable_to_non_nullable
               as List<Candidate>,
+      candidateLoading: freezed == candidateLoading
+          ? _value.candidateLoading
+          : candidateLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -227,7 +240,8 @@ class _$ApplicantStateImpl implements _ApplicantState {
       this.selectedFaculty,
       this.selectedSpecialty,
       this.isLoading,
-      final List<Candidate> candidates = const []})
+      final List<Candidate> candidates = const [],
+      this.candidateLoading = false})
       : _candidates = candidates;
 
   @override
@@ -250,8 +264,12 @@ class _$ApplicantStateImpl implements _ApplicantState {
   }
 
   @override
+  @JsonKey()
+  final bool? candidateLoading;
+
+  @override
   String toString() {
-    return 'ApplicantState(faculties: $faculties, specialitys: $specialitys, selectedFaculty: $selectedFaculty, selectedSpecialty: $selectedSpecialty, isLoading: $isLoading, candidates: $candidates)';
+    return 'ApplicantState(faculties: $faculties, specialitys: $specialitys, selectedFaculty: $selectedFaculty, selectedSpecialty: $selectedSpecialty, isLoading: $isLoading, candidates: $candidates, candidateLoading: $candidateLoading)';
   }
 
   @override
@@ -270,7 +288,9 @@ class _$ApplicantStateImpl implements _ApplicantState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
-                .equals(other._candidates, _candidates));
+                .equals(other._candidates, _candidates) &&
+            (identical(other.candidateLoading, candidateLoading) ||
+                other.candidateLoading == candidateLoading));
   }
 
   @override
@@ -281,7 +301,8 @@ class _$ApplicantStateImpl implements _ApplicantState {
       selectedFaculty,
       selectedSpecialty,
       isLoading,
-      const DeepCollectionEquality().hash(_candidates));
+      const DeepCollectionEquality().hash(_candidates),
+      candidateLoading);
 
   @JsonKey(ignore: true)
   @override
@@ -298,7 +319,8 @@ abstract class _ApplicantState implements ApplicantState {
       final Faculty? selectedFaculty,
       final Specialty? selectedSpecialty,
       final bool? isLoading,
-      final List<Candidate> candidates}) = _$ApplicantStateImpl;
+      final List<Candidate> candidates,
+      final bool? candidateLoading}) = _$ApplicantStateImpl;
 
   @override
   FacultiesResponce? get faculties;
@@ -312,6 +334,8 @@ abstract class _ApplicantState implements ApplicantState {
   bool? get isLoading;
   @override
   List<Candidate> get candidates;
+  @override
+  bool? get candidateLoading;
   @override
   @JsonKey(ignore: true)
   _$$ApplicantStateImplCopyWith<_$ApplicantStateImpl> get copyWith =>

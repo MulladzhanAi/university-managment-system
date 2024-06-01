@@ -11,4 +11,9 @@ class BaseRepository {
 
   Future<AuthResponce> signIn(Map<String, dynamic> map) {
     return api.signIn(map);
-  }}
+  }
+
+  Future<void> verifyApplicant(Map<String,dynamic> map){
+    return api.verifyApplicant(map);
+  }
+}

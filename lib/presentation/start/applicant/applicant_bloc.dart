@@ -27,9 +27,7 @@ class ApplicantBloc extends Cubit<ApplicantState>{
   }
 
   void changeFaculty(Faculty faculty){
-    print('change faculty');
-
-    emit(state.copyWith(selectedFaculty: faculty));
+    emit(state.copyWith(selectedFaculty: faculty,candidates: [],selectedSpecialty: null));
     print('${state.selectedFaculty}');
     getSpecialty();
   }
@@ -53,9 +51,9 @@ class ApplicantBloc extends Cubit<ApplicantState>{
   
   void getCandidates(){
     if(state.selectedSpecialty==null) return;
+    emit(state.copyWith(candidateLoading: true));
     httpService.getCandidateByFacultytiId(state.selectedSpecialty!.admissionId!).then((value) {
-      emit(state.copyWith(candidates: value.data ?? []));
-      print(value);
+      emit(state.copyWith(candidates: value.data ?? [],candidateLoading: false));
     });
   }
 

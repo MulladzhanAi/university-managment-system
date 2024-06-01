@@ -6,6 +6,7 @@ part 'faculties.g.dart';
 
 @freezed
 class Faculty with _$Faculty{
+  const  Faculty._();
   factory Faculty({
     int? facultyId,
     String? facultyName,
@@ -14,4 +15,8 @@ class Faculty with _$Faculty{
 
   factory Faculty.fromJson(Map<String,dynamic>json)=>_$FacultyFromJson(json);
 
+  @override
+  String toString() {
+    return facultyName ?? '';
+  }
 }

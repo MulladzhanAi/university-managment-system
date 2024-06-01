@@ -31,11 +31,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
       },
       child: BlocBuilder<RegisterBloc,RegisterState>(
         builder: (BuildContext context, RegisterState state) {
-          if(state.isLoading ?? false){
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
           return  Scaffold(
             appBar: AppBar(),
             body: Padding(
@@ -58,12 +53,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   const SizedBox(height: 16,),
                   Button(
+                    isLoading: state.isLoading,
                     title: "Log in",
                     onTap: ()async{
                       await bloc.signIN(context);
                       //bloc.authComplete(context);
                     },
-                  )
+                  ),
+                  if(state.showError!)...[
+                    const SizedBox(height: 16,),
+                    Text("${state.errorText}",style: TextStyle(color: Colors.red),),
+                  ]
                 ],
               ),
             ),

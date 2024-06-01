@@ -38,6 +38,12 @@ mixin _$ApplyState {
   dynamic get personFounded => throw _privateConstructorUsedError;
   bool get hasPersonData => throw _privateConstructorUsedError;
   bool get codeIsMatch => throw _privateConstructorUsedError;
+  bool get showInputFields => throw _privateConstructorUsedError;
+  bool get submitPnIsLoading => throw _privateConstructorUsedError;
+  bool get showPnInputFileds => throw _privateConstructorUsedError;
+  bool get showError => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+  String? get supportText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplyStateCopyWith<ApplyState> get copyWith =>
@@ -72,7 +78,13 @@ abstract class $ApplyStateCopyWith<$Res> {
       bool? showVerifField,
       dynamic personFounded,
       bool hasPersonData,
-      bool codeIsMatch});
+      bool codeIsMatch,
+      bool showInputFields,
+      bool submitPnIsLoading,
+      bool showPnInputFileds,
+      bool showError,
+      String? errorMessage,
+      String? supportText});
 }
 
 /// @nodoc
@@ -110,6 +122,12 @@ class _$ApplyStateCopyWithImpl<$Res, $Val extends ApplyState>
     Object? personFounded = freezed,
     Object? hasPersonData = null,
     Object? codeIsMatch = null,
+    Object? showInputFields = null,
+    Object? submitPnIsLoading = null,
+    Object? showPnInputFileds = null,
+    Object? showError = null,
+    Object? errorMessage = freezed,
+    Object? supportText = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -200,6 +218,30 @@ class _$ApplyStateCopyWithImpl<$Res, $Val extends ApplyState>
           ? _value.codeIsMatch
           : codeIsMatch // ignore: cast_nullable_to_non_nullable
               as bool,
+      showInputFields: null == showInputFields
+          ? _value.showInputFields
+          : showInputFields // ignore: cast_nullable_to_non_nullable
+              as bool,
+      submitPnIsLoading: null == submitPnIsLoading
+          ? _value.submitPnIsLoading
+          : submitPnIsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPnInputFileds: null == showPnInputFileds
+          ? _value.showPnInputFileds
+          : showPnInputFileds // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showError: null == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      supportText: freezed == supportText
+          ? _value.supportText
+          : supportText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -233,7 +275,13 @@ abstract class _$$ApplyImplCopyWith<$Res> implements $ApplyStateCopyWith<$Res> {
       bool? showVerifField,
       dynamic personFounded,
       bool hasPersonData,
-      bool codeIsMatch});
+      bool codeIsMatch,
+      bool showInputFields,
+      bool submitPnIsLoading,
+      bool showPnInputFileds,
+      bool showError,
+      String? errorMessage,
+      String? supportText});
 }
 
 /// @nodoc
@@ -269,6 +317,12 @@ class __$$ApplyImplCopyWithImpl<$Res>
     Object? personFounded = freezed,
     Object? hasPersonData = null,
     Object? codeIsMatch = null,
+    Object? showInputFields = null,
+    Object? submitPnIsLoading = null,
+    Object? showPnInputFileds = null,
+    Object? showError = null,
+    Object? errorMessage = freezed,
+    Object? supportText = freezed,
   }) {
     return _then(_$ApplyImpl(
       isLoading: null == isLoading
@@ -357,6 +411,30 @@ class __$$ApplyImplCopyWithImpl<$Res>
           ? _value.codeIsMatch
           : codeIsMatch // ignore: cast_nullable_to_non_nullable
               as bool,
+      showInputFields: null == showInputFields
+          ? _value.showInputFields
+          : showInputFields // ignore: cast_nullable_to_non_nullable
+              as bool,
+      submitPnIsLoading: null == submitPnIsLoading
+          ? _value.submitPnIsLoading
+          : submitPnIsLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showPnInputFileds: null == showPnInputFileds
+          ? _value.showPnInputFileds
+          : showPnInputFileds // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showError: null == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      supportText: freezed == supportText
+          ? _value.supportText
+          : supportText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -386,7 +464,13 @@ class _$ApplyImpl implements _Apply {
       this.showVerifField = false,
       this.personFounded = false,
       this.hasPersonData = false,
-      this.codeIsMatch = false});
+      this.codeIsMatch = false,
+      this.showInputFields = false,
+      this.submitPnIsLoading = false,
+      this.showPnInputFileds = true,
+      this.showError = false,
+      this.errorMessage,
+      this.supportText});
 
   @override
   @JsonKey()
@@ -437,10 +521,26 @@ class _$ApplyImpl implements _Apply {
   @override
   @JsonKey()
   final bool codeIsMatch;
+  @override
+  @JsonKey()
+  final bool showInputFields;
+  @override
+  @JsonKey()
+  final bool submitPnIsLoading;
+  @override
+  @JsonKey()
+  final bool showPnInputFileds;
+  @override
+  @JsonKey()
+  final bool showError;
+  @override
+  final String? errorMessage;
+  @override
+  final String? supportText;
 
   @override
   String toString() {
-    return 'ApplyState(isLoading: $isLoading, personalNumber: $personalNumber, specialtyId: $specialtyId, facultyId: $facultyId, departmentId: $departmentId, email: $email, passportId: $passportId, country: $country, nationality: $nationality, testScore: $testScore, specialityAdmissionId: $specialityAdmissionId, dateOfBirth: $dateOfBirth, gender: $gender, firstName: $firstName, middleName: $middleName, lastName: $lastName, verificationCode: $verificationCode, applicantApplicationId: $applicantApplicationId, showVerifField: $showVerifField, personFounded: $personFounded, hasPersonData: $hasPersonData, codeIsMatch: $codeIsMatch)';
+    return 'ApplyState(isLoading: $isLoading, personalNumber: $personalNumber, specialtyId: $specialtyId, facultyId: $facultyId, departmentId: $departmentId, email: $email, passportId: $passportId, country: $country, nationality: $nationality, testScore: $testScore, specialityAdmissionId: $specialityAdmissionId, dateOfBirth: $dateOfBirth, gender: $gender, firstName: $firstName, middleName: $middleName, lastName: $lastName, verificationCode: $verificationCode, applicantApplicationId: $applicantApplicationId, showVerifField: $showVerifField, personFounded: $personFounded, hasPersonData: $hasPersonData, codeIsMatch: $codeIsMatch, showInputFields: $showInputFields, submitPnIsLoading: $submitPnIsLoading, showPnInputFileds: $showPnInputFileds, showError: $showError, errorMessage: $errorMessage, supportText: $supportText)';
   }
 
   @override
@@ -488,7 +588,19 @@ class _$ApplyImpl implements _Apply {
             (identical(other.hasPersonData, hasPersonData) ||
                 other.hasPersonData == hasPersonData) &&
             (identical(other.codeIsMatch, codeIsMatch) ||
-                other.codeIsMatch == codeIsMatch));
+                other.codeIsMatch == codeIsMatch) &&
+            (identical(other.showInputFields, showInputFields) ||
+                other.showInputFields == showInputFields) &&
+            (identical(other.submitPnIsLoading, submitPnIsLoading) ||
+                other.submitPnIsLoading == submitPnIsLoading) &&
+            (identical(other.showPnInputFileds, showPnInputFileds) ||
+                other.showPnInputFileds == showPnInputFileds) &&
+            (identical(other.showError, showError) ||
+                other.showError == showError) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.supportText, supportText) ||
+                other.supportText == supportText));
   }
 
   @override
@@ -515,7 +627,13 @@ class _$ApplyImpl implements _Apply {
         showVerifField,
         const DeepCollectionEquality().hash(personFounded),
         hasPersonData,
-        codeIsMatch
+        codeIsMatch,
+        showInputFields,
+        submitPnIsLoading,
+        showPnInputFileds,
+        showError,
+        errorMessage,
+        supportText
       ]);
 
   @JsonKey(ignore: true)
@@ -548,7 +666,13 @@ abstract class _Apply implements ApplyState {
       final bool? showVerifField,
       final dynamic personFounded,
       final bool hasPersonData,
-      final bool codeIsMatch}) = _$ApplyImpl;
+      final bool codeIsMatch,
+      final bool showInputFields,
+      final bool submitPnIsLoading,
+      final bool showPnInputFileds,
+      final bool showError,
+      final String? errorMessage,
+      final String? supportText}) = _$ApplyImpl;
 
   @override
   bool get isLoading;
@@ -594,6 +718,18 @@ abstract class _Apply implements ApplyState {
   bool get hasPersonData;
   @override
   bool get codeIsMatch;
+  @override
+  bool get showInputFields;
+  @override
+  bool get submitPnIsLoading;
+  @override
+  bool get showPnInputFileds;
+  @override
+  bool get showError;
+  @override
+  String? get errorMessage;
+  @override
+  String? get supportText;
   @override
   @JsonKey(ignore: true)
   _$$ApplyImplCopyWith<_$ApplyImpl> get copyWith =>

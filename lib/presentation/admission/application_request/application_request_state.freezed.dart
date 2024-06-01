@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ApplicationRequestState {
   bool get isLoading => throw _privateConstructorUsedError;
   VerifyApplicantData? get data => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
+  bool? get showError => throw _privateConstructorUsedError;
+  String? get supportMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ApplicationRequestStateCopyWith<ApplicationRequestState> get copyWith =>
@@ -30,7 +34,13 @@ abstract class $ApplicationRequestStateCopyWith<$Res> {
           $Res Function(ApplicationRequestState) then) =
       _$ApplicationRequestStateCopyWithImpl<$Res, ApplicationRequestState>;
   @useResult
-  $Res call({bool isLoading, VerifyApplicantData? data});
+  $Res call(
+      {bool isLoading,
+      VerifyApplicantData? data,
+      String? message,
+      String? errorMessage,
+      bool? showError,
+      String? supportMessage});
 
   $VerifyApplicantDataCopyWith<$Res>? get data;
 }
@@ -51,6 +61,10 @@ class _$ApplicationRequestStateCopyWithImpl<$Res,
   $Res call({
     Object? isLoading = null,
     Object? data = freezed,
+    Object? message = freezed,
+    Object? errorMessage = freezed,
+    Object? showError = freezed,
+    Object? supportMessage = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -61,6 +75,22 @@ class _$ApplicationRequestStateCopyWithImpl<$Res,
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as VerifyApplicantData?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showError: freezed == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      supportMessage: freezed == supportMessage
+          ? _value.supportMessage
+          : supportMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -86,7 +116,13 @@ abstract class _$$ApplicationRequestStateImplCopyWith<$Res>
       __$$ApplicationRequestStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, VerifyApplicantData? data});
+  $Res call(
+      {bool isLoading,
+      VerifyApplicantData? data,
+      String? message,
+      String? errorMessage,
+      bool? showError,
+      String? supportMessage});
 
   @override
   $VerifyApplicantDataCopyWith<$Res>? get data;
@@ -107,6 +143,10 @@ class __$$ApplicationRequestStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? data = freezed,
+    Object? message = freezed,
+    Object? errorMessage = freezed,
+    Object? showError = freezed,
+    Object? supportMessage = freezed,
   }) {
     return _then(_$ApplicationRequestStateImpl(
       isLoading: null == isLoading
@@ -117,6 +157,22 @@ class __$$ApplicationRequestStateImplCopyWithImpl<$Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as VerifyApplicantData?,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      errorMessage: freezed == errorMessage
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
+      showError: freezed == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      supportMessage: freezed == supportMessage
+          ? _value.supportMessage
+          : supportMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -124,17 +180,32 @@ class __$$ApplicationRequestStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ApplicationRequestStateImpl implements _ApplicationRequestState {
-  _$ApplicationRequestStateImpl({this.isLoading = false, this.data});
+  _$ApplicationRequestStateImpl(
+      {this.isLoading = false,
+      this.data,
+      this.message,
+      this.errorMessage,
+      this.showError = false,
+      this.supportMessage});
 
   @override
   @JsonKey()
   final bool isLoading;
   @override
   final VerifyApplicantData? data;
+  @override
+  final String? message;
+  @override
+  final String? errorMessage;
+  @override
+  @JsonKey()
+  final bool? showError;
+  @override
+  final String? supportMessage;
 
   @override
   String toString() {
-    return 'ApplicationRequestState(isLoading: $isLoading, data: $data)';
+    return 'ApplicationRequestState(isLoading: $isLoading, data: $data, message: $message, errorMessage: $errorMessage, showError: $showError, supportMessage: $supportMessage)';
   }
 
   @override
@@ -144,11 +215,19 @@ class _$ApplicationRequestStateImpl implements _ApplicationRequestState {
             other is _$ApplicationRequestStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.errorMessage, errorMessage) ||
+                other.errorMessage == errorMessage) &&
+            (identical(other.showError, showError) ||
+                other.showError == showError) &&
+            (identical(other.supportMessage, supportMessage) ||
+                other.supportMessage == supportMessage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, data);
+  int get hashCode => Object.hash(runtimeType, isLoading, data, message,
+      errorMessage, showError, supportMessage);
 
   @JsonKey(ignore: true)
   @override
@@ -161,12 +240,24 @@ class _$ApplicationRequestStateImpl implements _ApplicationRequestState {
 abstract class _ApplicationRequestState implements ApplicationRequestState {
   factory _ApplicationRequestState(
       {final bool isLoading,
-      final VerifyApplicantData? data}) = _$ApplicationRequestStateImpl;
+      final VerifyApplicantData? data,
+      final String? message,
+      final String? errorMessage,
+      final bool? showError,
+      final String? supportMessage}) = _$ApplicationRequestStateImpl;
 
   @override
   bool get isLoading;
   @override
   VerifyApplicantData? get data;
+  @override
+  String? get message;
+  @override
+  String? get errorMessage;
+  @override
+  bool? get showError;
+  @override
+  String? get supportMessage;
   @override
   @JsonKey(ignore: true)
   _$$ApplicationRequestStateImplCopyWith<_$ApplicationRequestStateImpl>

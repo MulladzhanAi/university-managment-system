@@ -9,5 +9,9 @@ class ApplicationRequestState with _$ApplicationRequestState{
   factory ApplicationRequestState({
     @Default(false) bool isLoading,
     VerifyApplicantData? data,
+    String? message,
+    String? errorMessage,
+    @Default(false) bool? showError,
+    String? supportMessage,
 })=_ApplicationRequestState;
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sanzh/models/faculties.dart';
+import 'package:sanzh/models/specialty.dart';
 
 class DropDown<T> extends StatefulWidget {
   List<T> items;
@@ -16,7 +18,7 @@ class DropDown<T> extends StatefulWidget {
     super.key});
 
   @override
-  State<DropDown> createState() => _DropDownState();
+  State<DropDown<T>> createState() => _DropDownState<T>();
 }
 
 class _DropDownState<T> extends State<DropDown<T>> {
@@ -35,7 +37,7 @@ class _DropDownState<T> extends State<DropDown<T>> {
         hint: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
             child: widget.hint),
-        items: _buildItems(),
+        items: _buildItems<T>(),
         onChanged: (Object? value) {
           var val = value as T;
           setState(() {
@@ -47,14 +49,39 @@ class _DropDownState<T> extends State<DropDown<T>> {
     );
   }
 
-  _buildItems(){
+/*  _buildItems(){
     return widget.items.map((e) {
-      return DropdownMenuItem(
-        value: e,
-        child: Text("${e}"),
-      );
+      if(e is Faculty){
+        return DropdownMenuItem(
+          value: e,
+          child: Text("${e.facultyName}"),
+        );
+      }
+      else if(e is Specialty){
+        return DropdownMenuItem(
+          value: e,
+          child: Text("${e.specialtyName}"),
+        );
+      }else{
+        return DropdownMenuItem(
+          value: e,
+          child: Text("${e}"),
+        );
+      }
+    }).toList();
+  }*/
+  _buildItems<T>(){
+    return widget.items.map((e) {
+
+        return DropdownMenuItem(
+          value: e,
+          child: Text("${e}"),
+        );
     }).toList();
   }
 
+  String _getDisplayText(T item) {
+    return item.toString();
+  }
 
 }

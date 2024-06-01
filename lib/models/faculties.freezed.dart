@@ -104,8 +104,8 @@ class __$$FacultyImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FacultyImpl implements _Faculty {
-  _$FacultyImpl({this.facultyId, this.facultyName});
+class _$FacultyImpl extends _Faculty {
+  _$FacultyImpl({this.facultyId, this.facultyName}) : super._();
 
   factory _$FacultyImpl.fromJson(Map<String, dynamic> json) =>
       _$$FacultyImplFromJson(json);
@@ -114,11 +114,6 @@ class _$FacultyImpl implements _Faculty {
   final int? facultyId;
   @override
   final String? facultyName;
-
-  @override
-  String toString() {
-    return 'Faculty(facultyId: $facultyId, facultyName: $facultyName)';
-  }
 
   @override
   bool operator ==(Object other) {
@@ -149,9 +144,10 @@ class _$FacultyImpl implements _Faculty {
   }
 }
 
-abstract class _Faculty implements Faculty {
+abstract class _Faculty extends Faculty {
   factory _Faculty({final int? facultyId, final String? facultyName}) =
       _$FacultyImpl;
+  _Faculty._() : super._();
 
   factory _Faculty.fromJson(Map<String, dynamic> json) = _$FacultyImpl.fromJson;
 

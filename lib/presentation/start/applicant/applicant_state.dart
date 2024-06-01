@@ -17,5 +17,6 @@ class ApplicantState with _$ApplicantState{
     final Specialty? selectedSpecialty,
     final bool? isLoading,
     @Default([]) List<Candidate> candidates,
+    @Default(false) bool? candidateLoading,
 })=_ApplicantState;
 }

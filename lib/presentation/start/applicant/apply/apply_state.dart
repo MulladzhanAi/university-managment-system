@@ -27,6 +27,11 @@ class ApplyState with _$ApplyState{
     @Default(false) personFounded,
     @Default(false) bool hasPersonData,
     @Default(false) bool codeIsMatch,
-
+    @Default(false) bool showInputFields,
+    @Default(false) bool submitPnIsLoading,
+    @Default(true) bool showPnInputFileds,
+    @Default(false) bool showError,
+    String? errorMessage,
+    String? supportText,
   })=_Apply;
 }

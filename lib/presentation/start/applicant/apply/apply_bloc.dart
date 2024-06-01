@@ -83,12 +83,12 @@ class ApplyBloc extends Cubit<ApplyState>{
   }
 
   submitPersonalNumber(){
-    emit(state.copyWith(personalNumber: pNumber));
+    emit(state.copyWith(personalNumber: pNumber,submitPnIsLoading: true));
     if(state.personalNumber==null) return;
     httpService.getPersonDataByPn(state.personalNumber!).then((value) {
       print(value);
       if(value.status==400 && value.data==null){
-        emit(state.copyWith(personFounded: false));
+        emit(state.copyWith(personFounded: false,showInputFields: true,submitPnIsLoading: false,showPnInputFileds: false));
       }
     });
 
@@ -111,7 +111,12 @@ class ApplyBloc extends Cubit<ApplyState>{
   }*/
 
   sendApplicantData(){
-
+    emit(state.copyWith(isLoading: true));
+    bool canSend=checkFields();
+    if(!canSend){
+      emit(state.copyWith(showError: true,errorMessage: 'Заполните все поля',isLoading: false));
+      return;
+    }
     Map<String,dynamic> map =Map();
     map['testScore']=state.testScore;
     map['specialtyAdmissionId']=state.specialityAdmissionId;
@@ -128,12 +133,25 @@ class ApplyBloc extends Cubit<ApplyState>{
     map['lastName']=state.lastName;
     httpService.registerApplicant(map).then((value){
       if(value.message=='OK'){
-        emit(state.copyWith(applicantApplicationId: value.applicantApplicationId,showVerifField: true));
+        emit(state.copyWith(applicantApplicationId: value.applicantApplicationId,
+            showVerifField: true,isLoading: false,showInputFields: false,supportText: null));
+      }
+      if(value.status==400){
+        emit(state.copyWith(isLoading: false,supportText: value.message));
       }
       print(value);
     });
   }
 
+  bool checkFields(){
+    if(state.firstName==null || state.lastName==null || state.middleName==null
+        || state.email==null || state.testScore==null || state.personalNumber==null
+        || state.nationality==null || state.passportId==null || state.country==null
+        || state.dateOfBirth==null || state.gender==null){
+      return false;
+    }
+    return true;
+  }
 
   changeVerificationCode(String? value){
     verificationCode=value;
@@ -144,10 +162,13 @@ class ApplyBloc extends Cubit<ApplyState>{
     Map<String,dynamic> map=Map();
     map['applicantApplicationId']=state.applicantApplicationId;
     map['code']=state.verificationCode;
+    emit(state.copyWith(isLoading: true));
     httpService.registerApplicantVerifCode(map).then((value) {
       print(value);
-      if(value.message=='OK'){
-        emit(state.copyWith(codeIsMatch: true));
+      if(value.status==200){
+        emit(state.copyWith(codeIsMatch: true,isLoading: false,showVerifField: false,showError: false));
+      }else if(value.status==400){
+        emit(state.copyWith(isLoading: false,showError: true,errorMessage: value.message));
       }
     });
   }

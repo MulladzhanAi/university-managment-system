@@ -8,6 +8,8 @@ class RegisterState with _$RegisterState{
   factory RegisterState({
     String? login,
     String? password,
-  bool? isLoading,
+    @Default(false)bool? isLoading,
+    @Default(false)bool? showError,
+    String? errorText,
 })=_RegisterState;
 }

@@ -19,6 +19,8 @@ mixin _$RegisterState {
   String? get login => throw _privateConstructorUsedError;
   String? get password => throw _privateConstructorUsedError;
   bool? get isLoading => throw _privateConstructorUsedError;
+  bool? get showError => throw _privateConstructorUsedError;
+  String? get errorText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterStateCopyWith<RegisterState> get copyWith =>
@@ -31,7 +33,12 @@ abstract class $RegisterStateCopyWith<$Res> {
           RegisterState value, $Res Function(RegisterState) then) =
       _$RegisterStateCopyWithImpl<$Res, RegisterState>;
   @useResult
-  $Res call({String? login, String? password, bool? isLoading});
+  $Res call(
+      {String? login,
+      String? password,
+      bool? isLoading,
+      bool? showError,
+      String? errorText});
 }
 
 /// @nodoc
@@ -50,6 +57,8 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
     Object? login = freezed,
     Object? password = freezed,
     Object? isLoading = freezed,
+    Object? showError = freezed,
+    Object? errorText = freezed,
   }) {
     return _then(_value.copyWith(
       login: freezed == login
@@ -64,6 +73,14 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool?,
+      showError: freezed == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorText: freezed == errorText
+          ? _value.errorText
+          : errorText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -76,7 +93,12 @@ abstract class _$$RegisterStateImplCopyWith<$Res>
       __$$RegisterStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? login, String? password, bool? isLoading});
+  $Res call(
+      {String? login,
+      String? password,
+      bool? isLoading,
+      bool? showError,
+      String? errorText});
 }
 
 /// @nodoc
@@ -93,6 +115,8 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
     Object? login = freezed,
     Object? password = freezed,
     Object? isLoading = freezed,
+    Object? showError = freezed,
+    Object? errorText = freezed,
   }) {
     return _then(_$RegisterStateImpl(
       login: freezed == login
@@ -107,6 +131,14 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool?,
+      showError: freezed == showError
+          ? _value.showError
+          : showError // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      errorText: freezed == errorText
+          ? _value.errorText
+          : errorText // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -114,18 +146,29 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RegisterStateImpl implements _RegisterState {
-  _$RegisterStateImpl({this.login, this.password, this.isLoading});
+  _$RegisterStateImpl(
+      {this.login,
+      this.password,
+      this.isLoading = false,
+      this.showError = false,
+      this.errorText});
 
   @override
   final String? login;
   @override
   final String? password;
   @override
+  @JsonKey()
   final bool? isLoading;
+  @override
+  @JsonKey()
+  final bool? showError;
+  @override
+  final String? errorText;
 
   @override
   String toString() {
-    return 'RegisterState(login: $login, password: $password, isLoading: $isLoading)';
+    return 'RegisterState(login: $login, password: $password, isLoading: $isLoading, showError: $showError, errorText: $errorText)';
   }
 
   @override
@@ -137,11 +180,16 @@ class _$RegisterStateImpl implements _RegisterState {
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading));
+                other.isLoading == isLoading) &&
+            (identical(other.showError, showError) ||
+                other.showError == showError) &&
+            (identical(other.errorText, errorText) ||
+                other.errorText == errorText));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, login, password, isLoading);
+  int get hashCode => Object.hash(
+      runtimeType, login, password, isLoading, showError, errorText);
 
   @JsonKey(ignore: true)
   @override
@@ -154,7 +202,9 @@ abstract class _RegisterState implements RegisterState {
   factory _RegisterState(
       {final String? login,
       final String? password,
-      final bool? isLoading}) = _$RegisterStateImpl;
+      final bool? isLoading,
+      final bool? showError,
+      final String? errorText}) = _$RegisterStateImpl;
 
   @override
   String? get login;
@@ -162,6 +212,10 @@ abstract class _RegisterState implements RegisterState {
   String? get password;
   @override
   bool? get isLoading;
+  @override
+  bool? get showError;
+  @override
+  String? get errorText;
   @override
   @JsonKey(ignore: true)
   _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>

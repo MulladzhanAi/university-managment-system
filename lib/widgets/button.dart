@@ -7,13 +7,15 @@ class Button extends StatefulWidget {
   final Color? borderColor;
   final Color? textColor;
   final double? width;
-  Button({
+  final bool? isLoading;
+  const Button({
     required this.title,
     required this.onTap,
     this.width,
     this.borderColor,
     this.color,
     this.textColor,
+    this.isLoading=false,
     super.key
   });
 
@@ -38,7 +40,7 @@ class _ButtonState extends State<Button> {
         ),
         child: Align(
           alignment: Alignment.center,
-          child: Text(
+          child: widget.isLoading! ? Center(child: CircularProgressIndicator(),)  : Text(
             widget.title,
             style: TextStyle(
               color: widget.textColor ?? Colors.black,
