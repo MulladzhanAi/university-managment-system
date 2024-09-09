@@ -24,4 +24,8 @@ Map<String, dynamic> _$$AuthResponceImplToJson(_$AuthResponceImpl instance) =>
 
 const _$RolesEnumMap = {
   Roles.ADMISSION_COMMISSION: 'ADMISSION_COMMISSION',
+  Roles.CURRICULUM_DEPARTMENT: 'CURRICULUM_DEPARTMENT',
+  Roles.STUDENT: 'STUDENT',
+  Roles.ADMIN: 'ADMIN',
+  Roles.TEACHER: 'TEACHER',
 };

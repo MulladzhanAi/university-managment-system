@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sanzh/domain/repository/storage_repository.dart';
+import 'package:sanzh/injection/injectable.dart';
 import 'package:sanzh/presentation/register/register_bloc.dart';
 import 'package:sanzh/presentation/register/register_state.dart';
 
@@ -19,7 +21,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
-    bloc=RegisterBloc();
+    bloc=RegisterBloc(getIt.get<StorageRepository>());
     super.initState();
   }
 

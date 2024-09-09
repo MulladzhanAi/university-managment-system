@@ -54,7 +54,7 @@ class _AdmissionStartScreenState extends State<AdmissionStartScreen> {
                   Button(
                     color: Colors.transparent,
                     borderColor: Colors.lightBlue,
-                    title: 'Обьявить набор',
+                    title: 'Наборы',
                     onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
                         return RecruitmentScreen();

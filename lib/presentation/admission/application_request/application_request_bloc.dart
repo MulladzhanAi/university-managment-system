@@ -18,7 +18,7 @@ class ApplicationRequestBloc extends Cubit<ApplicationRequestState>{
     emit(state.copyWith(isLoading: true));
     httpService.verifyInOrder().then((value) {
       if(value.message=='Заявки абитуриентов отсутствуют'){
-        emit(state.copyWith(supportMessage: 'Заявок больше нет',isLoading: false));
+        emit(state.copyWith(supportMessage: 'Заявки абитуриентов отсутствуют',isLoading: false,data: null));
         return;
       }
       emit(state.copyWith(data: value.data,isLoading: false));

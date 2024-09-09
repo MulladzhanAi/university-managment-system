@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:sanzh/models/responce/auth_responce.dart';
 
 import '../../constans.dart';
+import '../../models/responce/base_responce.dart';
 
 part 'api_service.g.dart';
 
@@ -19,5 +20,11 @@ abstract class ApiService{
   
   @POST('/applicant/verify')
   Future<void> verifyApplicant(@Body() Map<String,dynamic> map);
+  
+  @POST('/admission/create')
+  Future<BaseResponce> createRecruitment(@Body() dynamic map);
+  
+  @POST('curriculum/create')
+  Future<BaseResponce> createCurriculum(@Body() dynamic map);
 
 }

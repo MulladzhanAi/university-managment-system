@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sanzh/domain/repository/storage_repository.dart';
 import 'package:sanzh/injection/injectable.dart';
 import 'package:sanzh/injection/token_single.dart';
 import 'package:sanzh/presentation/admission/admission_start_screen.dart';
@@ -37,8 +38,7 @@ class CustomDrawer extends StatelessWidget {
             child: Text("Выход",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
             onTap: (){
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                getIt.get<TokenSingle>().token='';
-                getIt.get<TokenSingle>().role=null;
+                getIt.get<StorageRepository>().clear();
                 return StartScreen();
               }));
             },
